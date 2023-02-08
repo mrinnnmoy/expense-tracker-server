@@ -10,9 +10,9 @@ const categories_model = new Schema({
 
 // transactions  => field => ['name', 'type', 'amount', 'date']
 const transaction_model = new Schema({
-  name: { type: String, default: "Anonymous" },
+  name: { type: String, default: "Salary" },
   type: { type: String, default: "Investment" },
-  amount: { type: Number },
+  amount: { type: Number, default: "35000" },
   date: { type: Date, default: Date.now },
 });
 
