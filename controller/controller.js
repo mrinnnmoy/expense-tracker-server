@@ -1,10 +1,10 @@
 const model = require("../models/model");
 
-// post : https://localhost:8080/api/categories
+//  post: http://localhost:8080/api/categories
 async function create_Categories(req, res) {
   const Create = new model.Categories({
     type: "Expense",
-    color: "#C43095",
+    color: "#36a2e1",
   });
 
   await Create.save(function (err) {
@@ -15,18 +15,19 @@ async function create_Categories(req, res) {
   });
 }
 
-// get : https://localhost:8080/api/categories
+//  get: http://localhost:8080/api/categories
 async function get_Categories(req, res) {
   let data = await model.Categories.find({});
+
   let filter = await data.map((v) =>
     Object.assign({}, { type: v.type, color: v.color })
   );
   return res.json(filter);
 }
 
-// post : https://localhost:8080/api/transaction
+//  post: http://localhost:8080/api/transaction
 async function create_Transaction(req, res) {
-  if (!req.body) return res.status(400).json("Post HTTP Data not provided");
+  if (!req.body) return res.status(400).json("Post HTTP Data not Provided");
   let { name, type, amount } = req.body;
 
   const create = await new model.Transaction({
@@ -44,13 +45,13 @@ async function create_Transaction(req, res) {
   });
 }
 
-// get : https://localhost:8080/api/transaction
+//  get: http://localhost:8080/api/transaction
 async function get_Transaction(req, res) {
   let data = await model.Transaction.find({});
   return res.json(data);
 }
 
-// delete: https://localhost:8080/api/transaction
+//  delete: http://localhost:8080/api/transaction
 async function delete_Transaction(req, res) {
   if (!req.body) res.status(400).json({ message: "Request body not Found" });
   await model.Transaction.deleteOne(req.body, function (err) {

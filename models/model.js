@@ -12,7 +12,7 @@ const categories_model = new Schema({
 const transaction_model = new Schema({
   name: { type: String, default: "Salary" },
   type: { type: String, default: "Investment" },
-  amount: { type: Number, default: "35000" },
+  amount: { type: Number},
   date: { type: Date, default: Date.now },
 });
 
